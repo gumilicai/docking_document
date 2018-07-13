@@ -121,16 +121,16 @@ Timestamp | 时间戳，单位秒，数据发送的当前时间
 
 ```php
 // 加密算法
-RawData = RandomStr + DataLength + Data + PlatId;
+RawData = Nonce + DataLength + Data + appId;
 EncryptData = AESEncrypt(RawData, ReqKey);
 ```
 
 变量名 | 描述
 --- | ---
-RandomStr | 16个字节的随机字符串
+Nonce | 16个字节的随机字符串
 DatadLength | 数据长度，固定4个字节
 Data | 明文数据
-PlatId | 谷米财富分配给平台的ID
+appId | 谷米财富分配给平台的ID
 RawData | 加密前的数据
 EncryptData | 加密后的数据
 ReqKey | 请求密钥
@@ -308,7 +308,7 @@ code | message
 ```
 
 
-请求回调的Method 为 `POST` 参数为
+请求Method 为 `POST` 参数为
 `data=谷米财富&nonce=xxxx&signature=xxxx&timestamp=12345643`
 
 ### Response
